@@ -27,6 +27,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
+                    sh "mkdir version-${BUILD_ID}"
                     echo "Deployed finished"
                 }
             }
