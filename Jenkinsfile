@@ -6,6 +6,10 @@ pipeline {
         nodejs "nodejs"
     }
 
+    environment {
+        COLOR_MAP = ["good", "danger"]
+    }
+
     stages {
         stage("Check version") {
             steps {
@@ -29,6 +33,21 @@ pipeline {
                 script {
                     sh "mkdir version-${BUILD_ID}"
                     echo "Deployed finished"
+                }
+            }
+        }
+
+        stage("Send Slack Notification"){
+            steps {
+                echo "Send notification to slack"
+            }
+
+            post{
+                always {
+                    slackSend channel: 'jenkins', 
+                    color: COLOR_MAP[currentBuild.currentResult], 
+                    message: "${env.JOB_NAME} ${env.BUILD_NUMBER} Deployed successfully, view here n\ ${env.BUILD_URL}", 
+                    tokenCredentialId: 'slackToken'
                 }
             }
         }
