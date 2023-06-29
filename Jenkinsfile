@@ -8,8 +8,8 @@ pipeline {
 
     environment {
         COLOR_MAP = [
-            'SUCCESS': 'good'
-            'FAILURE': 'danger'
+            'SUCCESS': 'good',
+            'FAILURE': 'danger',
         ]
     }
 
