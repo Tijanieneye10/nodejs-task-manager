@@ -46,7 +46,7 @@ pipeline {
                 always {
                     slackSend channel: 'jenkins', 
                     color: COLOR_MAP[currentBuild.currentResult], 
-                    message: "${env.JOB_NAME} ${env.BUILD_NUMBER} Deployed successfully, view here n\ ${env.BUILD_URL}", 
+                    message: "${env.JOB_NAME} ${env.BUILD_NUMBER} Deployed successfully, view here \n ${env.BUILD_URL}", 
                     tokenCredentialId: 'slackToken'
                 }
             }
