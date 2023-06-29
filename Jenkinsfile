@@ -1,16 +1,13 @@
 #!/bin/env groovy
+def COLOR_MAP = [
+        'SUCCESS': 'good',
+        'FAILURE': 'danger',
+    ]
 
 pipeline {
     agent any
     tools {
         nodejs "nodejs"
-    }
-
-    environment {
-        COLOR_MAP = [
-            'SUCCESS': 'good',
-            'FAILURE': 'danger',
-        ]
     }
 
     stages {
